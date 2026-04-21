@@ -1,8 +1,9 @@
 <?php
 $jsonString = file_get_contents('ProgramWebsite.jsn');
-if($jsonString === false) {
-    die('файл не найден');
+if ($jsonString === false) {
+    die('Файл не найден');
 }
+
 $data = json_decode($jsonString, true);
 
 if (isset($data[0]) && is_array($data[0])) {
@@ -17,21 +18,33 @@ if (isset($data[0]) && is_array($data[0])) {
     echo '</pre>';
     die('Структура');
 }
-?>
 
-<h1>Каталог образовательных программ</h1>
-    
-    <?php foreach ($programs as $program): ?>
-        <div>
-            <h3><?php echo $program['name'] ?? 'Без названия'; ?></h3>
-            <img src="test1.jpg" alt="" style="height: 200px width:200px">
-            <p><strong>Часы:</strong> <?php echo $program['hours'] ?? '0'; ?> ч.</p>
-            <p><strong>Цена:</strong> <?php echo ($program['price'] ?? 0) > 0 ? number_format($program['price'], 0, ',', ' ') . ' ₽' : 'Бесплатно'; ?></p>
-            <p><strong>Описание:</strong> <?php echo mb_substr($program['description'] ?? '', 0, 100); ?>...</p>
-            <button>
-                <a href="index1.php">Подробнее</a>
-            </button>
+//вывод 12 карточками (4 ряда по 3)
+$programs = array_slice($programs, 0, 12);
+?>
+<link rel="stylesheet" href="style.css">
+    <div class="container">
+        <h1>Каталог образовательных программ</h1>
+        <p class="total">Всего программ: <?php echo count($programs); ?></p>
+        
+        <div class="catalog">
+            <?php foreach ($programs as $program): ?>
+                <div class="card">
+                    <img src="test1.jpg" alt="Изображение программы" class="card-image">
+                    <h3 class="card-title"><?php echo $program['name'] ?? 'Без названия'; ?></h3>
+                    <p class="card-hours"><?php echo $program['hours'] ?? '0'; ?> ч.</p>
+                    <p class="card-price">
+                        <?php 
+                        $price = $program['price'] ?? 0;
+                        if ($price > 0) {
+                            echo number_format($price, 0, ',', ' ') . ' ₽';
+                        } else {
+                            echo 'Бесплатно';
+                        }
+                        ?>
+                    </p>
+                    <a href="index1.php" class="card-btn">Подробнее →</a>
+                </div>
+            <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
-    
-    <p>Всего программ: <?php echo count($programs); ?></p>
+    </div>
