@@ -1,50 +1,66 @@
 <?php
 $jsonString = file_get_contents('ProgramWebsite.jsn');
-if ($jsonString === false) {
-    die('Файл не найден');
-}
+if($jsonString === false) die('файл не найден');
 
-$data = json_decode($jsonString, true);
-
-if (isset($data[0]) && is_array($data[0])) {
-    $programs = $data;
-} elseif (isset($data['programs'])) {
-    $programs = $data['programs'];
-} elseif (isset($data['data'])) {
-    $programs = $data['data'];
-} else {
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
-    die('Структура');
-}
-
-//вывод 12 карточками (4 ряда по 3)
-$programs = array_slice($programs, 0, 12);
+$allPrograms = json_decode($jsonString, true);
+$totalPrograms = count($allPrograms);
 ?>
-<link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css">
+<body>
     <div class="container">
-        <h1>Каталог образовательных программ</h1>
-        <p class="total">Всего программ: <?php echo count($programs); ?></p>
-        
-        <div class="catalog">
-            <?php foreach ($programs as $program): ?>
-                <div class="card">
-                    <img src="test1.jpg" alt="Изображение программы" class="card-image">
-                    <h3 class="card-title"><?php echo $program['name'] ?? 'Без названия'; ?></h3>
-                    <p class="card-hours"><?php echo $program['hours'] ?? '0'; ?> ч.</p>
-                    <p class="card-price">
-                        <?php 
-                        $price = $program['price'] ?? 0;
-                        if ($price > 0) {
-                            echo number_format($price, 0, ',', ' ') . ' ₽';
-                        } else {
-                            echo 'Бесплатно';
-                        }
-                        ?>
-                    </p>
-                    <a href="index1.php" class="card-btn">Подробнее →</a>
-                </div>
-            <?php endforeach; ?>
+        <div id="catalog" class="catalog"></div>
+        <div style="text-align: center; margin-top: 40px;">
+            <button id="loadMoreBtn" class="card-btn" style="background:#28a745; padding:12px 30px; font-size:16px;">Показать ещё (12)</button>
         </div>
     </div>
+    <script>
+        const programs = <?php echo json_encode($allPrograms); ?>;
+        let index = 0;
+        const perPage = 12;
+
+        function renderCard(p) {
+            const price = (p.price || 0) > 0 ? new Intl.NumberFormat('ru-RU').format(p.price) + ' ₽' : 'Бесплатно';
+            return `
+                <div class="card">
+                    <img src="test1.jpg" class="card-image">
+                    <h3 class="card-title">${escapeHtml(p.name || 'Без названия')}</h3>
+                    <p class="card-hours">⏱️ ${p.hours || 0} ч.</p>
+                    <p class="card-price"><strong>Цена:</strong> ${price}</p>
+                    <a href="index1.php" class="card-btn">Подробнее →</a>
+                </div>
+            `;
+        }
+
+        function escapeHtml(t) {
+            const div = document.createElement('div');
+            div.textContent = t;
+            return div.innerHTML;
+        }
+
+        function loadMore() {
+            const next = programs.slice(index, index + perPage);
+            if (next.length === 0) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
+                return;
+            }
+            next.forEach(p => {
+                document.getElementById('catalog').innerHTML += renderCard(p);
+            });
+            index += next.length;
+            const btn = document.getElementById('loadMoreBtn');
+            const remaining = programs.length - index;
+            if (remaining > 0) {
+                btn.textContent = `Показать ещё`;
+            } else {
+                btn.textContent = 'Все программы загружены';
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            }
+        }
+
+        loadMore();
+        document.getElementById('loadMoreBtn').onclick = loadMore;
+    </script>
+</body>
+</html>
