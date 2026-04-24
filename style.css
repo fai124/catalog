@@ -10,6 +10,27 @@ body {
     padding: 40px 20px;
 }
 
+.filters {
+display: flex;
+justify-content: center;
+gap: 15px;
+flex-wrap: wrap;
+margin-bottom: 20px;
+padding: 10px;
+background: #f8f9fa;
+border-radius: 8px;
+}
+
+.filters select, .filters input {
+ padding: 8px 12px;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 14px;
+}
+
+.filters input {
+min-width: 200px;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
