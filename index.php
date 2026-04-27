@@ -30,7 +30,6 @@ $allPrograms = json_decode($jsonString, true);
     </style>
 <body>
     <div class="container">
-        <!-- Фильтры -->
         <div class="filters">
             <input type="text" id="searchInput" placeholder="Поиск по названию...">
 
@@ -55,10 +54,8 @@ $allPrograms = json_decode($jsonString, true);
             </select>
         </div>
 
-        <!-- Каталог -->
         <div id="catalog" class="catalog"></div>
 
-        <!-- Кнопка "Показать ещё" -->
         <div style="text-align: center; margin-top: 40px;">
             <button id="loadMoreBtn" class="card-btn" style="background:#28a745; padding:12px 30px; font-size:16px;">
                 Показать ещё
@@ -89,7 +86,7 @@ $allPrograms = json_decode($jsonString, true);
                     <h3 class="card-title">${escapeHtml(p.name || 'Без названия')}</h3>
                     <p class="card-hours">${p.hours || 0} ч.</p>
                     <p class="card-price"><strong>Цена:</strong> ${price}</p>
-                    <a href="index1.php" class="card-btn">Подробнее →</a>
+                    <a href="index1.php?id=${encodeURIComponent(p.id)}" class="card-btn">Подробнее →</a>
                 </div>
             `;
         }
@@ -125,7 +122,7 @@ $allPrograms = json_decode($jsonString, true);
                 filteredPrograms.sort((a, b) => (a.hours || 0) - (b.hours || 0));
             }
 
-            // Перезагружаем каталог
+            // Перезагружаю каталог
             reloadCatalog();
         }
 
