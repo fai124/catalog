@@ -6,28 +6,7 @@ if ($jsonString === false) {
 $allPrograms = json_decode($jsonString, true);
 ?>
 
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        .filters select, .filters input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .filters input {
-            min-width: 200px;
-        }
-    </style>
+    <link rel="stylesheet" href="style5.css">
 <body>
     <div class="container">
         <div class="filters">
@@ -57,7 +36,7 @@ $allPrograms = json_decode($jsonString, true);
         <div id="catalog" class="catalog"></div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <button id="loadMoreBtn" class="card-btn" style="background:#28a745; padding:12px 30px; font-size:16px;">
+            <button id="loadMoreBtn" class="card-btn">
                 Показать ещё
             </button>
         </div>
@@ -86,7 +65,7 @@ $allPrograms = json_decode($jsonString, true);
                     <h3 class="card-title">${escapeHtml(p.name || 'Без названия')}</h3>
                     <p class="card-hours">${p.hours || 0} ч.</p>
                     <p class="card-price"><strong>Цена:</strong> ${price}</p>
-                    <a href="index1.php?id=${encodeURIComponent(p.id)}" class="card-btn">Подробнее →</a>
+                    <p><a href="index1.php?id=${encodeURIComponent(p.id)}" class="card-btn">Подробнее</a></p>
                 </div>
             `;
         }
@@ -113,7 +92,6 @@ $allPrograms = json_decode($jsonString, true);
                 return nameMatch && priceMatch && hoursMatch;
             });
 
-            // Сортировка
             if (sort === 'name-asc') {
                 filteredPrograms.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
             } else if (sort === 'price-asc') {
@@ -122,7 +100,6 @@ $allPrograms = json_decode($jsonString, true);
                 filteredPrograms.sort((a, b) => (a.hours || 0) - (b.hours || 0));
             }
 
-            // Перезагружаю каталог
             reloadCatalog();
         }
 
@@ -162,7 +139,6 @@ $allPrograms = json_decode($jsonString, true);
             btn.style.display = 'block';
         }
 
-        // Привязка событий
         document.getElementById('searchInput').addEventListener('input', applyFilters);
         document.getElementById('priceFilter').addEventListener('change', applyFilters);
         document.getElementById('hoursFilter').addEventListener('change', applyFilters);

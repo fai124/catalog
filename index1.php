@@ -35,12 +35,12 @@ function formatPrice($price) {
 }
 ?>
 
-    <title><?php echo htmlspecialchars($currentProgram['name'] ?? 'Программа'); ?></title>
-    <link rel="stylesheet" href="style1.css">
+    
+    <link rel="stylesheet" href="styleIndex3.css">
 <body>
     <div class="container">
         <div class="detail-container">
-            <a href="index.php" class="back-link">← Назад к каталогу</a>
+            <a href="index.php" class="back-link">Назад к каталогу</a>
             
             <h1 class="detail-title"><?php echo htmlspecialchars($currentProgram['name'] ?? 'Без названия'); ?></h1>
             
@@ -90,8 +90,7 @@ function formatPrice($price) {
             </div>
             <?php endif; ?>
             
-            <a href="index.php" class="btn-back">← Вернуться к каталогу</a>
+            <a href="index.php" class="btn-back">Записаться на курс</a>
         </div>
     </div>
 </body>
-</html>
