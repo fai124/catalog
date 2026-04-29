@@ -6,11 +6,10 @@ if ($jsonString === false) {
 $allPrograms = json_decode($jsonString, true);
 ?>
 
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="style14.css">
 <body>
-    <div class="container">
-        <div class="filters">
-            <input type="text" id="searchInput" placeholder="Поиск по названию...">
+<div class="filters">
+            <input type="searchfield" id="searchInput" placeholder="Поиск по названию...">
 
             <select id="priceFilter">
                 <option value="all">Цена: Все</option>
@@ -32,6 +31,7 @@ $allPrograms = json_decode($jsonString, true);
                 <option value="hours-asc">По длительности (сначала короткие)</option>
             </select>
         </div>
+    <div class="container1">
 
         <div id="catalog" class="catalog"></div>
 
@@ -48,7 +48,7 @@ $allPrograms = json_decode($jsonString, true);
         let index = 0;
         const perPage = 12;
 
-        function escapeHtml(text) {
+        function escapeHtml(text) {л
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
@@ -149,4 +149,3 @@ $allPrograms = json_decode($jsonString, true);
         document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
     </script>
 </body>
-</html>
