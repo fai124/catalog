@@ -19,9 +19,23 @@ $allPrograms = json_decode($jsonString, true);
 
             <select id="hoursFilter">
                 <option value="all">Часы: Все</option>
-                <option value="lt10">Менее 10 ч</option>
-                <option value="10to50">10–50 ч</option>
-                <option value="gt50">Более 50 ч</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="24">24</option>
+                <option value="30">30</option>
+                <option value="36">36</option>
+                <option value="72">72</option>
+                <option value="144">144</option>
+                <option value="216">216</option>
+                <option value="288">288</option>
+                <option value="432">432</option>
+                <option value="504">504</option>
+                <option value="576">576</option>
+                <option value="720">720</option>
+                <option value="864">864</option>
+                <option value="990">990</option>
+                <option value="1008">1008</option>
+                <option value="1296">1296</option>
             </select>
 
             <select id="sortOrder">
@@ -85,9 +99,23 @@ $allPrograms = json_decode($jsonString, true);
 
                 let hoursMatch = true;
                 const hours = p.hours || 0;
-                if (hoursFilter === 'lt10') hoursMatch = hours < 10;
-                if (hoursFilter === '10to50') hoursMatch = hours >= 10 && hours <= 50;
-                if (hoursFilter === 'gt50') hoursMatch = hours > 50;
+                if (hoursFilter === '16') hoursMatch = hours === 16;
+                if (hoursFilter === '18') hoursMatch = hours === 18;
+                if (hoursFilter === '24') hoursMatch = hours === 24;
+                if (hoursFilter === '30') hoursMatch = hours === 30;
+                if (hoursFilter === '36') hoursMatch = hours === 36;
+                if (hoursFilter === '72') hoursMatch = hours === 72;
+                if (hoursFilter === '144') hoursMatch = hours === 144;
+                if (hoursFilter === '216') hoursMatch = hours === 216;
+                if (hoursFilter === '288') hoursMatch = hours === 288;
+                if (hoursFilter === '432') hoursMatch = hours === 432;
+                if (hoursFilter === '504') hoursMatch = hours === 504;
+                if (hoursFilter === '576') hoursMatch = hours === 576;
+                if (hoursFilter === '720') hoursMatch = hours === 720;
+                if (hoursFilter === '864') hoursMatch = hours === 864;
+                if (hoursFilter === '990') hoursMatch = hours === 990;
+                if (hoursFilter === '1008') hoursMatch = hours === 1008;
+                if (hoursFilter === '1296') hoursMatch = hours === 1296;
 
                 return nameMatch && priceMatch && hoursMatch;
             });
