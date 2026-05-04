@@ -170,7 +170,6 @@ $allPrograms = json_decode($jsonString, true);
         btn.textContent = remaining > 0 ? 'Показать ещё' : 'Все программы загружены';
         btn.disabled = remaining === 0;
         btn.style.opacity = remaining === 0 ? '0.5' : '1';
-        btn.style.display = 'block';
     }
 
     document.getElementById('searchInput').addEventListener('input', applyFilters);
