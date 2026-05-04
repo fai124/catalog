@@ -6,7 +6,7 @@ if ($jsonString === false) {
 $allPrograms = json_decode($jsonString, true);
 ?>
 
-    <link rel="stylesheet" href="style19.css">
+    <link rel="stylesheet" href="style22.css">
 <body>
 <div class="filters">
             <input type="searchfield" id="searchInput" placeholder="Поиск по названию...">
@@ -50,7 +50,7 @@ $allPrograms = json_decode($jsonString, true);
         <div id="catalog" class="catalog"></div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <button id="loadMoreBtn" class="card-btn" style="opacity: 1;/* display: block; */" >
+            <button id="loadMoreBtn1" class="card-btn1" >
                 Показать ещё
             </button>
         </div>
@@ -79,7 +79,7 @@ $allPrograms = json_decode($jsonString, true);
                 <h3 class="card-title">${escapeHtml(p.name || 'Без названия')}</h3>
                 <p class="card-hours">${p.hours || 0} ч.</p>
                 <p class="card-price"><strong>Цена:</strong> ${price}</p>
-                <p><a href="index1.php?id=${encodeURIComponent(p.id)}" class="card-btn">Подробнее</a></p>
+                <p><a href="index1.php?id=${encodeURIComponent(p.id)}" class="card-btn1">Подробнее</a></p>
             </div>
         `;
     }
@@ -141,10 +141,10 @@ $allPrograms = json_decode($jsonString, true);
     function reloadCatalog() {
         document.getElementById('catalog').innerHTML = '';
         index = 0;
-        loadMore();
+        loadMore1();
     }
 
-    function loadMore() {
+    function loadMore1() {
         const fragment = document.createDocumentFragment();
         const nextBatch = filteredPrograms.slice(index, index + perPage);
 
@@ -179,7 +179,7 @@ $allPrograms = json_decode($jsonString, true);
     document.getElementById('sortOrder').addEventListener('change', applyFilters);
 
     // Перва загрузка
-    loadMore();
+    loadMore1();
     document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
 </script>
 </body>

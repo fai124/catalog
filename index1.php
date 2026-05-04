@@ -69,6 +69,7 @@ function formatPrice($price) {
                 <span class="detail-value"><?php echo htmlspecialchars($currentProgram['programtype'] ?? '—'); ?></span>
             </div>
             
+            
             <?php if (!empty($currentProgram['description'])): ?>
             <div class="detail-section">
                 <span class="detail-label"> Описание:</span>
