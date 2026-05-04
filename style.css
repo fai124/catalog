@@ -11,25 +11,26 @@ body {
 }
 
 .filters {
-display: flex;
-justify-content: center;
-gap: 15px;
-flex-wrap: wrap;
-margin-bottom: 20px;
-padding: 10px;
-border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .filters select, .filters input {
- padding: 8px 12px;
-border: 1px solid #ddd;
-border-radius: 4px;
-font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .filters input {
-min-width: 200px;
+    min-width: 200px;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -49,13 +50,11 @@ h1 {
     font-size: 14px;
 }
 
-
 .catalog {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
-
 
 .card {
     background: white;
@@ -80,7 +79,7 @@ h1 {
     background: #e0e0e0;
 }
 
-
+/* === Адаптация заголовка по длине === */
 .card-title {
     font-size: 16px;
     font-weight: bold;
@@ -89,22 +88,37 @@ h1 {
     line-height: 1.3;
     height: 42px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
+.card-title.short {
+    font-size: 16px;
+}
 
+.card-title.medium {
+    font-size: 14px;
+}
+
+.card-title.long {
+    font-size: 12px;
+}
+
+.card-title.superlong {
+    font-size: 10px;
+}
 .card-hours {
     font-size: 13px;
     color: #666;
     margin-bottom: 5px;
 }
 
-
 .card-price {
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0;
 }
-
 
 .card-btn {
     display: inline-block;
@@ -116,8 +130,6 @@ h1 {
     font-size: 13px;
     transition: background 0.2s;
 }
-
-
 
 @media (max-width: 800px) {
     .catalog {
