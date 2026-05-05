@@ -1,53 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .detail-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #06692c;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        .detail-title {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .detail-section {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .detail-label {
-            font-weight: bold;
-            color: #555;
-            width: 180px;
-            display: inline-block;
-        }
-        .detail-value {
-            color: #333;
-        }
-        .price-large {
-            font-size: 32px;
-            font-weight: bold;
-            color: #06692c;
-        }
-        .btn-back {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 25px;
-            background: #06692c;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn-back:hover {
-            background: #054d21;
-        }
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #06692c;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.detail-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 2px solid #06692c;
+    padding-bottom: 15px;
+}
+
+
+.info-card {
+    background: #06692c;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.info-item {
+    flex: 1;
+    min-width: 180px;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.info-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.price-value {
+    color: #06692c;
+    font-size: 20px;
+}
+
+
+.detail-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #06692c;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-content {
+    color: #444;
+    line-height: 1.6;
+}
+
+.section-content a {
+    color: #06692c;
+    text-decoration: none;
+}
+
+.section-content a:hover {
+    text-decoration: underline;
+}
+
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #06692c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-back:hover {
+    background: #054d21;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+
+@media (max-width: 800px) {
+    .info-card {
+        flex-direction: column;
+    }
+    
+    .detail-container {
+        padding: 20px;
+    }
+    
+    .detail-title {
+        font-size: 24px;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn-back {
+        text-align: center;
+    }
+}
