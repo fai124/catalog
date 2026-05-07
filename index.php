@@ -1,12 +1,12 @@
 <?php
-$jsonString = file_get_contents('ProgramWebsite.jsn');
+$jsonString = file_get_contents('ProgramWebsite1.jsn');
 if ($jsonString === false) {
     die('Файл не найден');
 }
 $allPrograms = json_decode($jsonString, true);
 ?>
 
-    <link rel="stylesheet" href="style22.css">
+    <link rel="stylesheet" href="style23.css">
 <body>
 <div class="filters">
             <input type="searchfield" id="searchInput" placeholder="Поиск по названию...">
@@ -50,7 +50,7 @@ $allPrograms = json_decode($jsonString, true);
         <div id="catalog" class="catalog"></div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <button id="loadMoreBtn1" class="card-btn1" >
+            <button id="loadMoreBtn" class="card-btn1" >
                 Показать ещё
             </button>
         </div>
@@ -179,6 +179,6 @@ $allPrograms = json_decode($jsonString, true);
 
     // Перва загрузка
     loadMore1();
-    document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
+    document.getElementById('loadMoreBtn').addEventListener('click', loadMore1);
 </script>
 </body>
