@@ -1,165 +1,118 @@
-* {
-    margin: 0;
-    padding: 0;
+/* ========== СТИЛИ ДЛЯ ФОРМЫ БИТРИКСА ========== */
+
+/* Контейнер формы */
+.bitrix-form {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Заголовки полей */
+.bitrix-form .form-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Поля ввода */
+.bitrix-form input[type="text"],
+.bitrix-form input[type="email"],
+.bitrix-form input[type="tel"],
+.bitrix-form input[type="number"],
+.bitrix-form select,
+.bitrix-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+.bitrix-form input:focus,
+.bitrix-form select:focus,
+.bitrix-form textarea:focus {
+    border-color: #06692c;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(6, 105, 44, 0.1);
 }
 
-.detail-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+/* Обязательные поля (звёздочка) */
+.bitrix-form .required-star {
+    color: #e44d26;
+    font-size: 14px;
 }
 
-.back-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #06692c;
-    text-decoration: none;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-}
-
-.detail-title {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #333;
-    border-bottom: 2px solid #06692c;
-    padding-bottom: 15px;
-}
-
-
-.info-card {
+/* Кнопка отправки */
+.bitrix-form input[type="submit"],
+.bitrix-form button[type="submit"] {
     background: #06692c;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.info-item {
-    flex: 1;
-    min-width: 180px;
-    padding: 12px 15px;
-    background: white;
+    color: white;
+    border: none;
+    padding: 12px 25px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.info-label {
-    font-size: 12px;
-    color: #a5a5a5;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-}
-
-.info-value {
     font-size: 16px;
     font-weight: 600;
-    color: white;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.price-value {
-    color: white;
-    font-size: 20px;
-}
-
-
-.detail-section {
-    margin-bottom: 25px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 12px;
-}
-
-.section-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #06692c;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #ddd;
-}
-
-.section-content {
-    color: #444;
-    line-height: 1.6;
-}
-
-.section-content a {
-    color: #06692c;
-    text-decoration: none;
-}
-
-.section-content a:hover {
-    text-decoration: underline;
-}
-
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.btn-back {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #06692c;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    border: none;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.3s;
+    width: 100%;
 }
 
-.btn-back:hover {
+.bitrix-form input[type="submit"]:hover {
     background: #054d21;
 }
 
-.btn-secondary {
+/* Кнопка сброса */
+.bitrix-form input[type="reset"] {
     background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
-.btn-secondary:hover {
-    background: #5a6268;
+/* Сообщения об ошибках */
+.bitrix-form .error-message,
+.bitrix-form .errortext {
+    color: #e44d26;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
+/* Сообщение об успешной отправке */
+.bitrix-form .success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
 
-@media (max-width: 800px) {
-    .info-card {
-        flex-direction: column;
-    }
-    
-    .detail-container {
-        padding: 20px;
-    }
-    
-    .detail-title {
-        font-size: 24px;
-    }
-    
-    .btn-group {
-        flex-direction: column;
-    }
-    
-    .btn-back {
-        text-align: center;
-    }
+/* Группа кнопок */
+.bitrix-form .button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* ========== АДАПТАЦИЯ ДЛЯ МОДАЛЬНОГО ОКНА ========== */
+#modalForm form {
+    margin: 0;
+}
+
+#modalForm table {
+    width: 100%;
+}
+
+#modalForm td {
+    padding: 8px 0;
+    display: block;
+}
+
+#modalForm .button-group {
+    justify-content: center;
 }
