@@ -5,7 +5,7 @@ if (empty($programId)) {
     die('ID программы не указан');
 }
 
-$jsonString = file_get_contents('ProgramWebsite.jsn');
+$jsonString = file_get_contents('ProgramWebsite1.jsn');
 if ($jsonString === false) {
     die('Файл с данными не найден');
 }
@@ -31,6 +31,12 @@ function formatPrice($price) {
     }
     return 'Бесплатно';
 }
+
+
+if (isset($GLOBALS['APPLICATION'])) {
+
+    $_POST['form_text_9'] = $currentProgram['name']; 
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +44,7 @@ function formatPrice($price) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($currentProgram['name'] ?? 'Программа'); ?></title>
-    <link rel="stylesheet" href="styleIndex13.css">
+    <link rel="stylesheet" href="styleIndex26.css">
 </head>
 <body>
     <div class="container">
@@ -49,19 +55,19 @@ function formatPrice($price) {
             
             <div class="info-card">
                 <div class="info-item">
-                    <div class="info-label"> Специальность</div>
-                    <div class="info-value"><?php echo htmlspecialchars($currentProgram['specialty'] ?? '—'); ?></div>
+                    <div class="info-label"> Стоимость</div>
+                    <div class="info-value price-value"><?php echo formatPrice($currentProgram['price'] ?? 0); ?></div>
                 </div>
                 <div class="info-item">
                     <div class="info-label"> Часы</div>
                     <div class="info-value"><?php echo $currentProgram['hours'] ?? '0'; ?> ч.</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label"> Стоимость</div>
-                    <div class="info-value price-value"><?php echo formatPrice($currentProgram['price'] ?? 0); ?></div>
+                    <div class="info-label"> Специальность</div>
+                    <div class="info-value"><?php echo htmlspecialchars($currentProgram['specialty'] ?? '—'); ?></div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">️ Кафедра</div>
+                    <div class="info-label">️Кафедра</div>
                     <div class="info-value"><?php echo htmlspecialchars($currentProgram['division'] ?? '—'); ?></div>
                 </div>
                 <div class="info-item">
@@ -96,11 +102,69 @@ function formatPrice($price) {
             </div>
             <?php endif; ?>
             
-
             <div class="btn-group">
-                <a href="index.php" class="btn-back">Записаться на курс</a>
+                <button id="openFormBtn" class="btn-back" style="background:#06692c; border:none; cursor:pointer;">Записаться на курс</button>
             </div>
         </div>
     </div>
+
+    <div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; max-width: 550px; width: 90%; border-radius: 16px; padding: 30px; position: relative; max-height: 90%; overflow-y: auto;">
+            
+            <!-- Кнопка закрытия -->
+            <button id="closeModalBtn" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 28px; cursor: pointer;">&times;</button>
+            
+            <h3 style="margin-bottom: 15px; color: #06692c;"> Запись на курс</h3>
+            <p style="margin-bottom: 20px; padding: 10px; background: #f0f7f0; border-radius: 8px;">
+                <strong>Вы выбрали программу:</strong><br>
+                <?php echo htmlspecialchars($currentProgram['name'] ?? 'Без названия'); ?>
+            </p>
+            
+            <?php
+            
+            $APPLICATION->IncludeComponent(
+                "bitrix:form.result.new",
+                ".default",
+                array(
+                    "WEB_FORM_ID" => "2",
+                    "AJAX_MODE" => "N",
+                    "SUCCESS_URL" => "",
+                    "CHAIN_ITEM_TEXT" => "",
+                    "CHAIN_ITEM_LINK" => "",
+                    "IGNORE_CUSTOM_TEMPLATE" => "N",
+                    "USE_EXTENDED_ERRORS" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "3600",
+                )
+            );
+            ?>
+        </div>
+    </div>
+
+    <script>
+        // Открыть модальное окно
+        var openBtn = document.getElementById('openFormBtn');
+        if (openBtn) {
+            openBtn.addEventListener('click', function() {
+                document.getElementById('modalForm').style.display = 'flex';
+            });
+        }
+        
+        // Закрыть модальное окно
+        var closeBtn = document.getElementById('closeModalBtn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                document.getElementById('modalForm').style.display = 'none';
+            });
+        }
+        
+        // Закрыть при клике вне окна
+        window.addEventListener('click', function(event) {
+            var modal = document.getElementById('modalForm');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
