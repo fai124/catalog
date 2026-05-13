@@ -52,14 +52,12 @@ body {
     flex: 1;
     min-width: 180px;
     padding: 12px 15px;
-    background: white;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .info-label {
     font-size: 12px;
-    color: #888;
+    color: #cbc4c4;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -68,13 +66,13 @@ body {
 .info-value {
     font-size: 16px;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .price-value {
-    color: #06692c;
+    color: #ffffff;
     font-size: 20px;
 }
 
@@ -141,7 +139,9 @@ body {
 .btn-secondary:hover {
     background: #5a6268;
 }
+.bitrix-form {
 
+}
 
 @media (max-width: 800px) {
     .info-card {
@@ -163,4 +163,123 @@ body {
     .btn-back {
         text-align: center;
     }
+}
+
+.bitrix-form {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+
+.bitrix-form .form-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+.bitrix-form input[type="text"],
+.bitrix-form input[type="email"],
+.bitrix-form input[type="tel"],
+.bitrix-form input[type="number"],
+.bitrix-form select,
+.bitrix-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+.bitrix-form input:focus,
+.bitrix-form select:focus,
+.bitrix-form textarea:focus {
+    border-color: #06692c;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(6, 105, 44, 0.1);
+}
+
+
+.bitrix-form .required-star {
+    color: #e44d26;
+    font-size: 14px;
+}
+
+
+.bitrix-form input[type="submit"],
+.bitrix-form button[type="submit"] {
+    background: #06692c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.bitrix-form input[type="submit"]:hover {
+    background: #054d21;
+}
+
+
+.bitrix-form input[type="reset"] {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+.bitrix-form .error-message,
+.bitrix-form .errortext {
+    color: #e44d26;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+.bitrix-form .success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.bitrix-form .button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+#modalForm form {
+    margin: 0;
+}
+
+#modalForm table {
+    width: 100%;
+}
+
+#modalForm td {
+    padding: 8px 0;
+    display: block;
+}
+
+#modalForm .button-group {
+    justify-content: center;
+}
+.form-sent .agreement-text {
+    display: none;
 }

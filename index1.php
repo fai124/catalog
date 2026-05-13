@@ -24,7 +24,7 @@ if (!$currentProgram) {
     die('Программа не найдена');
 }
 
-// Форматирование
+
 function formatPrice($price) {
     if ($price > 0) {
         return number_format($price, 0, ',', ' ') . ' ₽';
@@ -44,7 +44,7 @@ if (isset($GLOBALS['APPLICATION'])) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($currentProgram['name'] ?? 'Программа'); ?></title>
-    <link rel="stylesheet" href="styleIndex26.css">
+    <link rel="stylesheet" href="styleIndex30.css">
 </head>
 <body>
     <div class="container">
@@ -55,12 +55,12 @@ if (isset($GLOBALS['APPLICATION'])) {
             
             <div class="info-card">
                 <div class="info-item">
-                    <div class="info-label"> Стоимость</div>
-                    <div class="info-value price-value"><?php echo formatPrice($currentProgram['price'] ?? 0); ?></div>
-                </div>
-                <div class="info-item">
                     <div class="info-label"> Часы</div>
                     <div class="info-value"><?php echo $currentProgram['hours'] ?? '0'; ?> ч.</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label"> Стоимость</div>
+                    <div class="info-value price-value"><?php echo formatPrice($currentProgram['price'] ?? 0); ?></div>
                 </div>
                 <div class="info-item">
                     <div class="info-label"> Специальность</div>
@@ -138,11 +138,12 @@ if (isset($GLOBALS['APPLICATION'])) {
                 )
             );
             ?>
+<br>
+<div class="agreement-text" style="text-align: center;">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c <a href="https://susmu.su/1_Файлы/Отдел%20ТСО/dokumenty_2024/Политика%20по%20защите%20ПДн%20_12.04.2024%20с%20ИИ010.2024%20ЭП.pdf" target="_blank"> политикой конфиденциальности</a></div>
         </div>
     </div>
 
     <script>
-        // Открыть модальное окно
         var openBtn = document.getElementById('openFormBtn');
         if (openBtn) {
             openBtn.addEventListener('click', function() {
@@ -150,7 +151,7 @@ if (isset($GLOBALS['APPLICATION'])) {
             });
         }
         
-        // Закрыть модальное окно
+
         var closeBtn = document.getElementById('closeModalBtn');
         if (closeBtn) {
             closeBtn.addEventListener('click', function() {
@@ -158,13 +159,26 @@ if (isset($GLOBALS['APPLICATION'])) {
             });
         }
         
-        // Закрыть при клике вне окна
+
         window.addEventListener('click', function(event) {
             var modal = document.getElementById('modalForm');
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         });
+
+        function check() {
+            var successMessage = document.querySelector('success-message, .bitrix-form .success-message, .errortext');
+
+            if(successMessage) {
+                var agreementText = document.querySelector('agreement-text');
+                if(agreementText) {
+                    agreementText.style.display = 'none';
+                }
+            }
+        }
+
+        check();
     </script>
 </body>
 </html>
