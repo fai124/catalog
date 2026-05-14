@@ -127,7 +127,7 @@ if (isset($GLOBALS['APPLICATION'])) {
                 array(
                     "WEB_FORM_ID" => "2",
                     "AJAX_MODE" => "N",
-                    "SUCCESS_URL" => "/index.php",
+                    "SUCCESS_URL" => "",
                     "CHAIN_ITEM_TEXT" => "",
                     "CHAIN_ITEM_LINK" => "",
                     "IGNORE_CUSTOM_TEMPLATE" => "N",

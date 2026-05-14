@@ -161,7 +161,7 @@ $allPrograms = json_decode($jsonString, true);
         });
 
         document.getElementById('catalog').appendChild(fragment);
-        adjustTitleStyle(); // ← Применяем стили к заголовкам
+        adjustTitleStyle();
 
         index += nextBatch.length;
 
