@@ -167,18 +167,14 @@ if (isset($GLOBALS['APPLICATION'])) {
             }
         });
 
-        function check() {
-            var successMessage = document.querySelector('success-message, .bitrix-form .success-message, .errortext');
-
-            if(successMessage) {
-                var agreementText = document.querySelector('agreement-text');
-                if(agreementText) {
-                    agreementText.style.display = 'none';
-                }
-            }
-        }
-
-        check();
+        setInterval(function() {
+    var agreement = document.querySelector('.agreement-text');
+    var modal = document.getElementById('modalForm');
+    
+    if (agreement && modal && modal.innerText.includes('успешно')) {
+        agreement.style.display = 'none';
+    }
+}, 500);
     </script>
 </body>
 </html>
