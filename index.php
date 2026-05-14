@@ -49,7 +49,7 @@ $allPrograms = json_decode($jsonString, true);
 
         <div id="catalog" class="catalog"></div>
 
-        <div style="text-align: center; margin-top: 40px;">
+        <div class="MBtn">
             <button id="loadMoreBtn" class="card-btn1" >
                 Показать ещё
             </button>
@@ -84,7 +84,7 @@ $allPrograms = json_decode($jsonString, true);
         `;
     }
 
-    // Адаптация размера
+
     function adjustTitleStyle() {
         const titles = document.querySelectorAll('.card-title');
         titles.forEach(title => {
@@ -177,7 +177,6 @@ $allPrograms = json_decode($jsonString, true);
     document.getElementById('hoursFilter').addEventListener('change', applyFilters);
     document.getElementById('sortOrder').addEventListener('change', applyFilters);
 
-    // Перва загрузка
     loadMore1();
     document.getElementById('loadMoreBtn').addEventListener('click', loadMore1);
 </script>

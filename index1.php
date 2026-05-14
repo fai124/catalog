@@ -103,18 +103,17 @@ if (isset($GLOBALS['APPLICATION'])) {
             <?php endif; ?>
             
             <div class="btn-group">
-                <button id="openFormBtn" class="btn-back" style="background:#06692c; border:none; cursor:pointer;">Записаться на курс</button>
+                <button id="openFormBtn" class="btn-back">Записаться на курс</button>
             </div>
         </div>
     </div>
 
-    <div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background: white; max-width: 550px; width: 90%; border-radius: 16px; padding: 30px; position: relative; max-height: 90%; overflow-y: auto;">
+    <div id="modalForm" class="modal" >
+        <div class="modalin">
             
-            <!-- Кнопка закрытия -->
-            <button id="closeModalBtn" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 28px; cursor: pointer;">&times;</button>
+            <button id="closeModalBtn" class="CloseModal">&times;</button>
             
-            <h3 style="margin-bottom: 15px; color: #06692c;"> Запись на курс</h3>
+            <h3 class="modalTitle"> Запись на курс</h3>
             <p style="margin-bottom: 20px; padding: 10px; background: #f0f7f0; border-radius: 8px;">
                 <strong>Вы выбрали программу:</strong><br>
                 <?php echo htmlspecialchars($currentProgram['name'] ?? 'Без названия'); ?>
@@ -139,7 +138,7 @@ if (isset($GLOBALS['APPLICATION'])) {
             );
             ?>
 <br>
-<div class="agreement-text" style="text-align: center;">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c <a href="https://susmu.su/1_Файлы/Отдел%20ТСО/dokumenty_2024/Политика%20по%20защите%20ПДн%20_12.04.2024%20с%20ИИ010.2024%20ЭП.pdf" target="_blank"> политикой конфиденциальности</a></div>
+<div class="agreement-text">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c <a href="https://susmu.su/1_Файлы/Отдел%20ТСО/dokumenty_2024/Политика%20по%20защите%20ПДн%20_12.04.2024%20с%20ИИ010.2024%20ЭП.pdf" target="_blank"> политикой конфиденциальности</a></div>
         </div>
     </div>
 

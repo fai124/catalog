@@ -134,3 +134,7 @@ h1 {
         grid-template-columns: 1fr;
     }
 }
+.MBtn {
+    text-align: center; 
+    margin-top: 40px;
+}
