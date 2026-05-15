@@ -6,7 +6,7 @@ if ($jsonString === false) {
 $allPrograms = json_decode($jsonString, true);
 ?>
 
-    <link rel="stylesheet" href="style23.css">
+    <link rel="stylesheet" href="style25.css">
 <body>
 <div class="filters">
             <input type="searchfield" id="searchInput" placeholder="Поиск по названию...">
@@ -15,6 +15,8 @@ $allPrograms = json_decode($jsonString, true);
                 <option value="all">Цена: Все</option>
                 <option value="free">Бесплатные</option>
                 <option value="paid">Платные</option>
+                <option value="<10000">Больше 10000₽</option>
+                <option value=">10000">Меньше 10000₽</option>
             </select>
 
             <select id="hoursFilter">
@@ -117,6 +119,8 @@ $allPrograms = json_decode($jsonString, true);
             let priceMatch = true;
             if (priceFilter === 'free') priceMatch = (p.price || 0) === 0;
             if (priceFilter === 'paid') priceMatch = (p.price || 0) > 0;
+            if (priceFilter === '<10000') priceMatch = (p.price || 0) > 10000;
+            if (priceFilter === '>10000') priceMatch = (p.price || 0) < 10000;
 
             let hoursMatch = true;
             const hours = p.hours || 0;
